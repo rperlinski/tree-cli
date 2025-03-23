@@ -508,6 +508,17 @@ var Promise = require('bluebird'),
     return init(flags)
       .then(function () {
         var rootPath = path.resolve(_root, _flags.base);
+        _stats = {
+          all: [],
+          file: [],
+          directory: [],
+          blockdevice: [],
+          characterdevice: [],
+          symboliclink: [],
+          fifo: [],
+          socket: [],
+          ignore: {},
+        };
         return genTree(rootPath);
       })
       .then(function () {
